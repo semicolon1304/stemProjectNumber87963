@@ -1,10 +1,15 @@
-# Add custom print functions
+# Add functions from bookshelf.py
 import bookshelf as b
 
 score = 0
+turns = 10
 eventsCompleted = []
 
 ''' List of endings:
         Bucket, Marriage, Wally, 
 '''
-b.print2("Hello there. This is a string that needs to be quite long to show that text is a thing")
+# Starting text
+b.print2("Welcome! Travel about the town by using the menus. ")
+
+print(b.drawMenu(4, ["Hunt", "Move", "Travel to Texas", "Yes"], turns))
+turns -= 1
