@@ -1,6 +1,12 @@
 import sys
 import time
 
+class Location:
+  def __init__(self, menuOptions, description, adjacentLocations):
+    self.menuOptions = menuOptions
+    self.description = description
+    self.adjacentLocations = adjacentLocations
+
 
 # Standard Text
 def print2(text):
