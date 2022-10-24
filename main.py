@@ -2,8 +2,7 @@
 import bookshelf as b
 
 # Declaring locations and people so the program doesn't flip out
-school = ballField = gibbHouse = webbHouse = wallyRoom = mainStreet = wallyWebb = howieNewsome = mzGibbs = mrGibbs = mzWebb = mrWebb = georgeGibbs = rebeccaGibbs = emilyWebb = None
-listOLocations = [school, ballField, gibbHouse, webbHouse, wallyRoom, mainStreet]
+school = ballField = gibbHouse = webbHouse = wallyRoom = mainStreet = wally = howie = msGibbs = drGibbs = msWebb = mrWebb = george = rebecca = emily = None
 options = ["Move", "Talk", "Check"]
 
 # Locations
@@ -26,9 +25,11 @@ wally = b.Person("Wally",None,None)
 guy = b.Person("That Guy","Quarter","Phosphate")
 emily = b.Person("Emily","Note","Other Note")
 howie = b.Person("Howie",None,"Milk Bottle")
+sign = b.Person("Ominous Sign", None, None)
 
 # People 2: Revenge of the Dialogue
 howie.dialogue = "Hello, traveler! Welcome to our town!"
+howie.objectDialogue = "[!] Here! take this milk. I'm sure one of the Webbs would "
 wally.dialogue = "Hey! What are you doing in my room?!"
 guy.dialogue = "You want a soda? Only 25 cents!"
 
@@ -43,13 +44,13 @@ drugStore.adjacentLocations = [mainStreet]
 mainStreet.adjacentLocations = [gibbHouse, webbHouse, school, ballField, drugStore]
 
 # Adding people to locations because this program hates me
-school.adjacentLocations = [ballField, mainStreet]
-ballField.adjacentLocations = [school, mainStreet]
-gibbHouse.adjacentLocations = [webbHouse, mainStreet]
-webbHouse.adjacentLocations = [wallyRoom, gibbHouse, mainStreet]
-wallyRoom.adjacentLocations = [webbHouse]
-drugStore.adjacentLocations = [mainStreet]
-mainStreet.adjacentLocations = [gibbHouse, webbHouse, school, ballField, drugStore]
+school.people = [rebecca]
+ballField.people = [george]
+gibbHouse.people = [drGibbs, msGibbs]
+webbHouse.people = [mrWebb, msWebb]
+wallyRoom.people = [wally, sign]
+drugStore.people = [guy, emily]
+mainStreet.people = [howie]
 
 # Declaring some [pretty epic] variables 
 turns = 15
@@ -72,4 +73,4 @@ while turns > 0:
     item = b.talk(currentLocation, item)
     turns -= 1
   if option == 3:
-    print(f"People nearby: {currentLocation.people} Item: {item}")
+    print(f"People nearby: {''.join([person.name for person in currentLocation.people])} Item: {item}")

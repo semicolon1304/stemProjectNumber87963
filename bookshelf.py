@@ -6,8 +6,8 @@ class Location:
     self.name = name
     self.menuOptions = menuOptions
     self.description = description
-    self.adjacentLocations = None
-    self.people = None
+    self.adjacentLocations = []
+    self.people = []
 
 class Person:
   def __init__(self, name, likedObject, giveObject):
@@ -63,7 +63,7 @@ def move(currentArea):
 def talk(currentLocation, item):
   print()
   personDict = {}
-  for i, person in enumerate(currentArea.people):
+  for i, person in enumerate(currentLocation.people):
     personDict.update([(i+1, person)])
     print(f"{i+1}). {person.name}")
   num = int(input("\nWho do you want to talk to? "))
