@@ -67,16 +67,17 @@ def talk(currentLocation, item):
     personDict.update([(i+1, person)])
     print(f"{i+1}). {person.name}")
   num = int(input("\nWho do you want to talk to? "))
-  if personDict[num].name == "Sign":
-    print4("YOU CANNOT WIN.")
-  elif personDict[num].name != "Mr. Webb":
-    print2(personDict[num].dialogue) 
-  else:
-    print3(personDict[num].dialogue)
   if item == personDict[num].likedObject:
     if personDict[num].name != "Mr. Webb":
       print2(personDict[num].objectDialogue)
     else:
       print3(personDict[num].objectDialogue)
     return personDict[num].giveObject
+  if personDict[num].name == "Ominous Sign":
+    print4("YOU CANNOT WIN.")
+    item = "Futility"
+  elif personDict[num].name != "Mr. Webb":
+    print2(personDict[num].dialogue) 
+  else:
+    print3(personDict[num].dialogue)
   return item
