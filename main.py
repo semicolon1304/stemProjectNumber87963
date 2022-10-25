@@ -72,15 +72,12 @@ turns = 20
 eventsCompleted = []
 currentLocation = mainStreet
 item = None
-gameWinnable = True
 
 # Starting text
-b.print2("Welcome! Travel about the town by using the menus. Try to experience all you can before the Moon crashes into the earth. \n \n Type the number of the action you want to do. [Note: 'Check' doesn't use a turn] \n")
+b.print2("Welcome! Travel about the town by using the menus. Try to experience all you can before the time limit expires. \n \n Type the number of the action you want to do. [Note: 'Check' doesn't use a turn] \n")
 b.print2(f"You are standing on Main Street. {mainStreet.description} \n")
 
 while turns > 0:
-  if item == "Futility":
-    gameWinnable = False
   if turns != 15:
     print(currentLocation.description)
   option = b.drawMenu(len(currentLocation.menuOptions), currentLocation.menuOptions, turns)
@@ -91,7 +88,7 @@ while turns > 0:
     item = b.talk(currentLocation, item)
     turns -= 1
   if option == 3:
-    print(f"People nearby: {' '.join([person.name for person in currentLocation.people])} Item: {item}")
+    print(f"People nearby: {' '.join([person.name for person in currentLocation.people])} \nItem: {item}")
 
 if item == "Comepletion":
   b.print2("Congratulations! You managed to meet everyone and fully experience the town. Unfortunatley, The Moon seems to be seconds away from colliding with the planet. Thanks for taking the time to experience Our Tow-")
